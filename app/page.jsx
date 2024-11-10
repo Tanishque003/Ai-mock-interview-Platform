@@ -73,8 +73,8 @@ const Home = () => {
                         <h3 className="text-xl font-bold mb-4">Contact Us</h3>
                         <ul className="space-y-2">
                             <li>Email: <a href="mailto:support@mockinterview.com" className="hover:underline">support@mockinterview.com</a></li>
-                            <li>Phone: <a href="tel:+91 9301285187" className="hover:underline">+1 (234) 567-890</a></li>
-                            <li>Address: 123 Interview Lane, City, Country</li>
+                            <li>Phone: <a href="tel:+91 9301285187" className="hover:underline">+92 9310285187</a></li>
+                            <li>Address:India  </li>
                         </ul>
                     </div>
                     {/* Follow Us */}
