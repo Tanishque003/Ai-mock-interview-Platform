@@ -31,8 +31,8 @@ export default function Page() {
             Welcome to AI MOCK INTERVIEW 🦑
           </h2>
   
-          <p className="mt-4 leading-relaxed text-white/90">
-            EMBRACE THE POWER OF MOCK INTERVIEWS—WHERE NERVOUSNESS TRANSFORMS INTO CONFIDENCE AND YOU GET READY TO SHINE! BEGIN YOUR JOURNEY TODAY!
+          <p className="mt-4 leading-relaxed  font-bold text-white/90">
+           GET READY TO SHINE! BEGIN YOUR JOURNEY TODAY!
           </p>
         </div>
       </section>
