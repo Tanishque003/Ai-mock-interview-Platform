@@ -55,6 +55,7 @@ const Home = () => {
       <p>Get AI-powered suggestions to improve your resume based on industry standards and job roles.</p>
     </div>
   </div>
+    </section>
       {/* How It Works Section */}
       <section className="container mx-auto my-16 p-6">
         <h2 className="text-4xl font-bold text-center mb-10">How It Works</h2>
