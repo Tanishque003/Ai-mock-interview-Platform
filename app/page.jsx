@@ -14,7 +14,47 @@ const Home = () => {
           Get Started
         </Link>
       </header>
-
+  {/* Features Section */}
+<section className="container mx-auto my-16 p-6">
+  <h2 className="text-4xl font-bold text-center mb-10">Platform Features</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">AI-Powered Question Generation</h3>
+      <p>Generate interview questions tailored to your resume and job role using advanced AI algorithms.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Emotion Analysis</h3>
+      <p>Analyze your emotions and body language in real-time to gain insights into your non-verbal communication.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Interactive Voice Assistant</h3>
+      <p>Engage in mock interviews through our voice-enabled assistant for a more interactive experience.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Personalized Interview Simulation</h3>
+      <p>Simulate interviews for various job roles with scenarios tailored to your specific career goals.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Detailed Performance Reports</h3>
+      <p>Receive comprehensive feedback reports with actionable insights and improvement suggestions.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Progress Tracking Dashboard</h3>
+      <p>Monitor your improvement over time with visual analytics and performance metrics.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Content Preparation Resources</h3>
+      <p>Access curated study materials and tips for preparing effectively for interviews.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Multi-Platform Accessibility</h3>
+      <p>Use the platform seamlessly on desktop, tablet, and mobile devices for flexible learning.</p>
+    </div>
+    <div className="p-6 bg-white rounded-lg shadow-md text-center">
+      <h3 className="text-2xl font-semibold mb-4">Resume Enhancement Suggestions</h3>
+      <p>Get AI-powered suggestions to improve your resume based on industry standards and job roles.</p>
+    </div>
+  </div>
       {/* How It Works Section */}
       <section className="container mx-auto my-16 p-6">
         <h2 className="text-4xl font-bold text-center mb-10">How It Works</h2>
