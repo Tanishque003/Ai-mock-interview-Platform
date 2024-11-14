@@ -47,7 +47,7 @@ function RecordAnswerSection({
   }, [results]);
 
   useEffect(() => {
-    if (!isRecording && userAnswer?.length > 10) {
+    if (!isRecording && userAnswer?.length > 100) {
       UpdateUserAnswer();
     }
   }, [userAnswer]);
