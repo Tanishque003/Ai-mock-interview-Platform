@@ -35,10 +35,12 @@ function Header() {
             ${path=='/dashboard/upgrade'&&'text-primary font-bold'}
             `}>About Us</li>
 </Link>
+            <Link href={"/dashboard/howitworks"}>
 <li className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
-            ${path=='/dashboard/how'&&'text-primary font-bold'}
+            ${path=='/dashboard/howitworks'&&'text-primary font-bold'}
             `}>How it Works?</li>
+                </Link> 
 <li className={`hover:text-primary hover:font-bold transition-all
             cursor-pointer
             ${path=='/dashboard/resume-builder'&&'text-primary font-bold'}
