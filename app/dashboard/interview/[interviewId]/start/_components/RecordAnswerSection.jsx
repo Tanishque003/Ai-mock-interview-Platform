@@ -24,6 +24,7 @@ function RecordAnswerSection({
   const [emotion, setEmotion] = useState({ positivity: 0, uncomfortable: 0, happy: 0 });
   const [attention, setAttention] = useState(0);
   const [ageRange, setAgeRange] = useState("N/A");
+  const [micActivity, setMicActivity] = useState(0); // New state for mic activity
 
   const webcamRef = useRef(null);
 
@@ -47,7 +48,7 @@ function RecordAnswerSection({
   }, [results]);
 
   useEffect(() => {
-    if (!isRecording && userAnswer?.length > 100) {
+    if (!isRecording && userAnswer?.length > 10) {
       UpdateUserAnswer();
     }
   }, [userAnswer]);
@@ -111,17 +112,37 @@ function RecordAnswerSection({
   const detectFaceData = async () => {
     if (webcamRef.current) {
       const video = webcamRef.current.video;
+
       const detections = await faceapi
         .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
         .withFaceExpressions();
 
       if (detections) {
         const { expressions, age } = detections;
-        const positivity = Math.floor((expressions.happy + expressions.surprised) * 50);
-        const uncomfortable = Math.floor(expressions.sad * 100);
-        const attention = Math.floor(expressions.neutral * 100);
 
-        setEmotion({ positivity, uncomfortable, happy: expressions.happy * 100 });
+        let positivity = 0;
+        let attention = 0;
+        let uncomfortable = 0;
+
+        if (expressions.happy > 0.5 && expressions.neutral > 0.5) {
+          positivity = 100;
+          attention = 100;
+        } else if (
+          expressions.surprised > 0.3 &&
+          (expressions.angry > 0.2 || expressions.fearful > 0.2)
+        ) {
+          uncomfortable = 100;
+        } else {
+          positivity = Math.floor((expressions.happy + expressions.surprised + expressions.neutral) * 70);
+          attention = Math.floor(expressions.neutral * 100);
+          uncomfortable = Math.floor(expressions.sad * 100);
+        }
+
+        setEmotion({
+          positivity,
+          uncomfortable,
+          happy: expressions.happy * 100,
+        });
         setAttention(attention);
         setAgeRange(`${Math.floor(age - 5)}-${Math.ceil(age + 5)}`);
       }
@@ -129,9 +150,23 @@ function RecordAnswerSection({
   };
 
   useEffect(() => {
-    const interval = setInterval(detectFaceData, 100);
+    const interval = setInterval(detectFaceData, 10);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    let micInterval;
+    if (isRecording) {
+      micInterval = setInterval(() => {
+        const randomActivity = Math.floor(Math.random() * 100); // Simulate mic activity
+        setMicActivity(randomActivity);
+      }, 200);
+    } else {
+      setMicActivity(0);
+    }
+
+    return () => clearInterval(micInterval);
+  }, [isRecording]);
 
   return (
     <div className="flex items-center justify-center flex-col">
@@ -146,7 +181,6 @@ function RecordAnswerSection({
           }}
           onUserMediaError={(error) => console.log("Webcam Error: ", error)}
         />
-        {/* Face Analysis Display */}
         <div className="bg-gray-800 text-white p-4 rounded-lg mt-5 w-full max-w-md">
           <h3 className="text-lg font-semibold mb-2">Face Analysis</h3>
           <div className="mt-3">
@@ -175,6 +209,16 @@ function RecordAnswerSection({
               <div
                 className="bg-red-500 h-3 rounded-md"
                 style={{ width: `${emotion.uncomfortable}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="mt-3">
+            <p>Microphone Activity: {micActivity}%</p>
+            <div className="w-full bg-gray-600 h-3 rounded-md">
+              <div
+                className="bg-blue-500 h-3 rounded-md"
+                style={{ width: `${micActivity}%` }}
               ></div>
             </div>
           </div>
