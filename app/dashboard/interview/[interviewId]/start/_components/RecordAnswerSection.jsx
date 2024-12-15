@@ -150,7 +150,7 @@ function RecordAnswerSection({
   };
 
   useEffect(() => {
-    const interval = setInterval(detectFaceData, 10);
+    const interval = setInterval(detectFaceData, 50);
     return () => clearInterval(interval);
   }, []);
 
